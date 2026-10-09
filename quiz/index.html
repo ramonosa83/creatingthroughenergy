@@ -253,6 +253,7 @@ p { margin: 0; }
   var CONFIG = {
     preview: false,          // shows the dashed strip at the top; set false on the live page
     submitUrl: "https://formspree.io/f/mnpjdekj",          // where name, email and answers are posted; empty means nothing is sent
+    hookUrl: "https://hooks.zapier.com/hooks/catch/3920801/4134dni/",            // Zapier webhook that passes each lead on to Beehiiv; empty means it is skipped
     resetVideoId: "yYqNrW21NJs",   // the 5-Minute Nervous System Reset video on YouTube
     embedVideo: true,      // true on the live page: the Reset plays right on the result. Previews cannot embed video, so they link to it
     blueprintUrl: "https://www.creatingthroughenergy.com/blueprint/",   // the live Safety Blueprint sales page; the visitor's veto is added as #visibility, #loyalty or #ease
@@ -654,11 +655,19 @@ p { margin: 0; }
     }).then(function (r) { if (!r.ok) throw new Error("status " + r.status); });
   }
   // Try twice, then show the result anyway: someone who finished the quiz always sees their result.
+  // Zapier gets the same lead as plain form fields, sent in a way browsers allow without a pre-check.
+  function postHook(data) {
+    var body = new URLSearchParams();
+    Object.keys(data).forEach(function (k) { if (k.charAt(0) !== "_") body.append(k, data[k] == null ? "" : String(data[k])); });
+    return fetch(CONFIG.hookUrl, { method: "POST", mode: "no-cors", keepalive: true, body: body }).catch(function () {});
+  }
   function send(data) {
-    if (!CONFIG.submitUrl) return Promise.resolve();
+    var jobs = [];
+    if (CONFIG.submitUrl) jobs.push(post(data).catch(function () { return post(data); }).catch(function () {}));
+    if (CONFIG.hookUrl) jobs.push(postHook(data));
+    if (!jobs.length) return Promise.resolve();
     var stop = new Promise(function (res) { setTimeout(res, 9000); });
-    var tries = post(data).catch(function () { return post(data); }).catch(function () {});
-    return Promise.race([tries, stop]);
+    return Promise.race([Promise.all(jobs), stop]);
   }
 
   /* ---------- render ---------- */
