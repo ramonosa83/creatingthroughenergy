@@ -263,8 +263,8 @@ p { margin: 0; }
     preview: false,          // shows the dashed strip at the top; set false on the live page
     submitUrl: "https://formspree.io/f/mnpjdekj",          // where name, email and answers are posted; empty means nothing is sent
     hookUrl: "https://hooks.zapier.com/hooks/catch/3920801/4134dni/",            // Zapier webhook that passes each lead on to Beehiiv; empty means it is skipped
-    resetVideoId: "yYqNrW21NJs",   // the 5-Minute Nervous System Reset video on YouTube
-    resetEnd: 382,          // seconds (6:22). The video stops here, so what comes after it never plays on this page
+    resetVideoId: "s2zF3c27fzE",   // the 5-Minute Nervous System Reset on YouTube: the version with the offer at the end cut off
+    resetEnd: 0,            // optional stop time in seconds; 0 plays the whole video. Not needed now that the video itself is cut
     resetUrl: "https://www.creatingthroughenergy.com/reset/",   // the standalone Reset page, with the same stop time
     embedVideo: true,      // true on the live page: the Reset plays right on the result. Previews cannot embed video, so they link to it
     blueprintUrl: "https://www.creatingthroughenergy.com/blueprint/",   // the live Safety Blueprint sales page; the visitor's veto is added as #visibility, #loyalty or #ease
@@ -590,8 +590,8 @@ p { margin: 0; }
   function link(label, url, ghost) {
     return h("a", { class: "btn" + (ghost ? " ghost" : ""), href: url, target: "_blank", rel: "noopener" }, label);
   }
-  /* The Reset stops at CONFIG.resetEnd. The video's own stop time does it first; the watcher below
-     also catches a replay or someone dragging past that point, and covers the player. */
+  /* When the Reset ends, a cover with "Play it again" replaces YouTube's end screen.
+     If CONFIG.resetEnd is set, the video also stops at that second, including on a replay or a drag past it. */
   var ytWaiting = [], ytAsked = false;
   function whenYouTubeReady(fn) {
     if (window.YT && window.YT.Player) return fn();
@@ -621,11 +621,11 @@ p { margin: 0; }
       if (!document.contains(frame)) { clearInterval(timer); return; }
       var t = 0;
       try { t = player.getCurrentTime() || 0; } catch (e) {}
-      if (t >= CONFIG.resetEnd) finish(true);
+      if (CONFIG.resetEnd && t >= CONFIG.resetEnd) finish(true);
     }
     player = new window.YT.Player(frame, { events: {
       onReady: function () { timer = setInterval(watch, 400); },
-      onStateChange: function (ev) { if (ev.data === 0) finish(false); }   // 0 means the video reached its stop time
+      onStateChange: function (ev) { if (ev.data === 0) finish(false); }   // 0 means the video ended
     } });
     again.addEventListener("click", function () {
       cover.hidden = true;
@@ -635,7 +635,7 @@ p { margin: 0; }
   function resetPlayer() {
     if (!CONFIG.embedVideo) return link("Play the Reset", CONFIG.resetUrl, true);
     var frame = h("iframe", {
-      src: "https://www.youtube-nocookie.com/embed/" + CONFIG.resetVideoId + "?rel=0&modestbranding=1&playsinline=1&enablejsapi=1&end=" + CONFIG.resetEnd +
+      src: "https://www.youtube-nocookie.com/embed/" + CONFIG.resetVideoId + "?rel=0&modestbranding=1&playsinline=1&enablejsapi=1" + (CONFIG.resetEnd ? "&end=" + CONFIG.resetEnd : "") +
         (/^https?:/.test(location.origin) ? "&origin=" + encodeURIComponent(location.origin) : ""),
       title: "The 5-Minute Nervous System Reset", loading: "lazy", allowfullscreen: true,
       allow: "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share",

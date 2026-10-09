@@ -121,7 +121,7 @@ p { margin: 0; }
 
     <div class="video">
       <iframe id="reset-video"
-        src="https://www.youtube-nocookie.com/embed/yYqNrW21NJs?rel=0&amp;modestbranding=1&amp;playsinline=1&amp;enablejsapi=1&amp;end=382"
+        src="https://www.youtube-nocookie.com/embed/s2zF3c27fzE?rel=0&amp;modestbranding=1&amp;playsinline=1&amp;enablejsapi=1"
         title="The 5-Minute Nervous System Reset" allowfullscreen
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
         referrerpolicy="strict-origin-when-cross-origin"></iframe>
@@ -160,13 +160,13 @@ p { margin: 0; }
 <script>
 (function () {
   "use strict";
-  var END = 382;   // seconds (6:22). The video stops here, so what comes after it never plays on this page.
+  var END = 0;   // optional stop time in seconds; 0 plays the whole video (this upload already has the ending cut off)
   var frame = document.getElementById("reset-video");
   var cover = document.getElementById("reset-done");
   var again = document.getElementById("reset-again");
   var player, timer;
 
-  /* The video's own stop time ends it first. This watcher also catches a replay or someone dragging past that point. */
+  /* When the video ends, a cover with "Play it again" replaces YouTube's end screen. If END is set, the video also stops at that second. */
   function finish(pause) {
     if (pause) { try { player.pauseVideo(); } catch (e) {} }
     if (!cover.hidden) return;
@@ -176,7 +176,7 @@ p { margin: 0; }
   function watch() {
     var t = 0;
     try { t = player.getCurrentTime() || 0; } catch (e) {}
-    if (t >= END) finish(true);
+    if (END && t >= END) finish(true);
   }
   again.addEventListener("click", function () {
     cover.hidden = true;
@@ -188,7 +188,7 @@ p { margin: 0; }
     if (typeof earlier === "function") earlier();
     player = new window.YT.Player(frame, { events: {
       onReady: function () { timer = setInterval(watch, 400); },
-      onStateChange: function (ev) { if (ev.data === 0) finish(false); }   // 0 means the video reached its stop time
+      onStateChange: function (ev) { if (ev.data === 0) finish(false); }   // 0 means the video ended
     } });
   };
   var s = document.createElement("script");
