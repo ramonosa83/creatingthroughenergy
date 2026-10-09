@@ -1,0 +1,727 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Which veto is your body running? · Creating Through Energy</title>
+<meta name="description" content="For the person who's done the work and keeps arriving one step away. Eleven questions, about three minutes, and you'll see which of three vetoes your body is running.">
+<link rel="canonical" href="https://www.creatingthroughenergy.com/quiz/">
+<meta property="og:title" content="Which veto is your body running?">
+<meta property="og:description" content="For the person who's done the work and keeps arriving one step away. Eleven questions, about three minutes, and you'll see which of three vetoes your body is running.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://www.creatingthroughenergy.com/quiz/">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='42' fill='%23C98F4E'/%3E%3Ccircle cx='50' cy='50' r='20' fill='%23F6F1E7'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500;1,600&family=Jost:wght@400;500&display=swap">
+<style>
+[hidden] { display: none !important; }
+img { max-width: 100%; }
+/* Layout: one moment per screen in a single reading column; the result reads as a letter from Ramon. */
+/* Single dark look on purpose: this is the locked CTE system (midnight, gold, Cormorant Garamond, Jost). */
+:root {
+  color-scheme: dark;
+  --midnight: #0D0D14;
+  --panel: #161620;
+  --ivory: #EDE7DA;
+  --muted: #A8A294;
+  --gold: #C8AF78;
+  --gold-bright: #D9C391;
+  --line: rgba(200, 175, 120, .26);
+  --wash: rgba(200, 175, 120, .07);
+  --alert: #E3A08A;
+  --display: 'Cormorant Garamond', 'Iowan Old Style', 'Palatino Linotype', Georgia, serif;
+  --body: 'Jost', 'Avenir Next', 'Segoe UI', system-ui, sans-serif;
+}
+html, body { height: 100%; }
+body {
+  margin: 0;
+  background: radial-gradient(52rem 26rem at 50% -9rem, rgba(200, 175, 120, .17), transparent 70%) no-repeat, var(--midnight);
+  background-color: var(--midnight);
+  color: var(--ivory);
+  font-family: var(--body);
+  font-size: 1.125rem;
+  line-height: 1.62;
+  -webkit-font-smoothing: antialiased;
+}
+*, *::before, *::after { box-sizing: border-box; }
+.page {
+  max-width: 37rem;
+  min-height: 100%;
+  margin-inline: auto;
+  padding-inline: 1.25rem;
+  padding-block: 1.25rem 2.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2.25rem;
+}
+
+/* preview strip: for Ramon only, removed on the live page */
+.preview {
+  border: 1px dashed var(--muted);
+  color: var(--muted);
+  font-size: .85rem;
+  line-height: 1.45;
+  padding: .6rem .85rem;
+  display: grid;
+  gap: .5rem;
+}
+.preview strong { color: var(--ivory); font-weight: 500; }
+.preview summary { cursor: pointer; color: var(--gold); }
+.preview .row { display: flex; flex-wrap: wrap; align-items: center; gap: .4rem; margin-top: .55rem; }
+.preview .row span { min-width: 4.2rem; }
+.chip {
+  font: inherit;
+  color: var(--ivory);
+  background: transparent;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  padding: .25rem .75rem;
+  cursor: pointer;
+}
+.chip:hover { border-color: var(--gold); }
+.chip[aria-pressed="true"] { background: var(--gold); border-color: var(--gold); color: var(--midnight); }
+
+/* masthead + progress */
+.mast { display: grid; gap: .8rem; }
+.mast-top { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: .4rem 1rem; }
+.wordmark { font-size: .7rem; font-weight: 500; letter-spacing: .3em; text-transform: uppercase; color: var(--gold); }
+.count { font-size: .85rem; color: var(--muted); font-variant-numeric: tabular-nums; letter-spacing: .06em; }
+.bar { height: 2px; background: var(--line); }
+.bar i { display: block; height: 100%; width: 0; background: var(--gold); transition: width .4s ease; }
+
+/* screens */
+#stage { flex: 1; }
+.screen { display: grid; gap: 1.5rem; align-content: start; animation: rise .38s ease both; }
+@keyframes rise { from { opacity: 0; transform: translateY(8px); } }
+.lede { font-size: .78rem; font-weight: 500; letter-spacing: .24em; text-transform: uppercase; color: var(--gold); margin: 0; }
+h1, h2 { font-family: var(--display); font-weight: 500; margin: 0; text-wrap: balance; }
+h1 { font-size: clamp(1.85rem, 6.4vw, 2.5rem); line-height: 1.16; }
+h1:focus { outline: none; }
+.intro h1 { font-size: clamp(2.2rem, 8vw, 3.3rem); line-height: 1.08; }
+h1 em, .intro h1 em { font-style: italic; color: var(--gold); }
+p { margin: 0; }
+.prose { display: grid; gap: 1rem; }
+.quiet { color: var(--muted); font-size: 1rem; }
+
+.choices { display: grid; gap: .7rem; }
+.choice {
+  font: inherit;
+  text-align: left;
+  color: var(--ivory);
+  background: var(--wash);
+  border: 1px solid var(--line);
+  border-radius: 2px;
+  padding: 1rem 1.15rem;
+  min-height: 3.6rem;
+  cursor: pointer;
+  transition: background .15s, border-color .15s, color .15s;
+}
+.choice:hover { border-color: var(--gold); background: rgba(200, 175, 120, .13); }
+.choice[aria-pressed="true"] { background: var(--gold); border-color: var(--gold); color: var(--midnight); }
+.choice:focus-visible, .btn:focus-visible, .chip:focus-visible, .back:focus-visible, .preview summary:focus-visible {
+  outline: 2px solid var(--gold-bright);
+  outline-offset: 3px;
+}
+
+.btn {
+  display: inline-block;
+  font: 500 1.02rem/1.2 var(--body);
+  letter-spacing: .03em;
+  text-decoration: none;
+  text-align: center;
+  color: var(--midnight);
+  background: var(--gold);
+  border: 1px solid var(--gold);
+  border-radius: 999px;
+  padding: 1rem 1.9rem;
+  cursor: pointer;
+  transition: background .15s, transform .15s;
+}
+.btn:hover { background: var(--gold-bright); transform: translateY(-1px); }
+.btn[disabled] { opacity: .6; cursor: default; transform: none; }
+.btn.ghost { background: transparent; color: var(--gold); }
+.btn.ghost:hover { background: var(--wash); }
+.actions { display: flex; flex-wrap: wrap; align-items: center; gap: 1rem 1.5rem; }
+.back {
+  font: inherit;
+  font-size: .95rem;
+  color: var(--muted);
+  background: none;
+  border: 0;
+  padding: .4rem 0;
+  cursor: pointer;
+  justify-self: start;
+}
+.back:hover { color: var(--ivory); text-decoration: underline; }
+
+/* the out-loud sentence */
+.saywrap { position: relative; isolation: isolate; padding-block: 1.6rem; }
+.saywrap::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: radial-gradient(closest-side, rgba(200, 175, 120, .2), transparent);
+  animation: breathe 7s ease-in-out infinite;
+}
+@keyframes breathe { 0%, 100% { opacity: .45; } 50% { opacity: 1; } }
+.say { font: italic 500 clamp(1.95rem, 7.6vw, 2.9rem)/1.2 var(--display); color: var(--gold-bright); text-wrap: balance; }
+
+/* fields */
+.field { display: grid; gap: .45rem; }
+.field label { font-size: .78rem; font-weight: 500; letter-spacing: .2em; text-transform: uppercase; color: var(--muted); }
+.field input, .field textarea {
+  width: 100%;
+  font: inherit;
+  color: var(--ivory);
+  background: var(--wash);
+  border: 1px solid var(--line);
+  border-radius: 2px;
+  padding: .9rem 1rem;
+}
+.field textarea { min-height: 6.5rem; resize: vertical; }
+.field input:focus, .field textarea:focus { outline: 2px solid var(--gold); outline-offset: 1px; border-color: var(--gold); }
+.under { display: flex; justify-content: space-between; gap: 1rem; font-size: .9rem; color: var(--muted); font-variant-numeric: tabular-nums; }
+.error { color: var(--alert); font-size: .95rem; }
+.field label.stem { font: italic 500 clamp(1.6rem, 6vw, 2.1rem)/1.2 var(--display); letter-spacing: 0; text-transform: none; color: var(--gold-bright); }
+
+/* the result letter */
+.letter { display: grid; gap: 1.05rem; }
+.letter h2 { font-size: clamp(1.5rem, 5.4vw, 1.85rem); line-height: 1.2; margin-top: 1.5rem; }
+.moment { font: italic 500 1.4rem/1.35 var(--display); }
+.own {
+  font: italic 500 clamp(1.55rem, 6vw, 2rem)/1.25 var(--display);
+  color: var(--gold-bright);
+  border-block: 1px solid var(--line);
+  padding-block: 1.3rem;
+  overflow-wrap: anywhere;
+}
+.said { font: italic 500 1.45rem/1.35 var(--display); padding-left: 1.25rem; }
+.offer {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  padding: 1.75rem 1.4rem;
+  margin-top: 1.75rem;
+  display: grid;
+  gap: 1.05rem;
+}
+.offer h2 { margin-top: 0; }
+.offer .btn, .reset .btn { justify-self: start; margin-top: .4rem; }
+.sig { font: italic 500 1.7rem/1.1 var(--display); color: var(--gold); }
+
+.foot { font-size: .7rem; letter-spacing: .26em; text-transform: uppercase; color: var(--muted); }
+
+@media (prefers-reduced-motion: reduce) {
+  .screen, .saywrap::before { animation: none; }
+  .bar i, .btn, .choice { transition: none; }
+}
+</style>
+</head>
+<body>
+<div class="page">
+  <div class="preview" id="preview" hidden>
+    <p><strong>Preview.</strong> Nothing is saved or sent yet. <span id="preview-status"></span></p>
+    <details>
+      <summary>Jump to a sample result</summary>
+      <div class="row" id="preview-vetoes"><span>Result</span></div>
+      <div class="row" id="preview-closes"><span>Closing</span></div>
+      <div class="row"><button class="chip" type="button" id="preview-restart">Start the quiz over</button></div>
+    </details>
+  </div>
+
+  <header class="mast">
+    <div class="mast-top">
+      <span class="wordmark">Creating Through Energy</span>
+      <span class="count" id="count" hidden></span>
+    </div>
+    <div class="bar" id="bar" hidden><i id="bar-fill"></i></div>
+  </header>
+
+  <main id="stage"></main>
+
+  <footer class="foot">Wealth from Safety</footer>
+</div>
+
+<script>
+(function () {
+  "use strict";
+
+  /* ---------- settings: the only block that changes between preview and live ---------- */
+  var CONFIG = {
+    preview: false,          // shows the dashed strip at the top; set false on the live page
+    submitUrl: "https://formspree.io/f/mnpjdekj",          // where name, email and answers are posted; empty means nothing is sent
+    resetUrl: "https://5minutereset.creatingthroughenergy.com",
+    blueprintUrl: "https://www.creatingthroughenergy.com/blueprint/",   // the live Safety Blueprint sales page; the visitor's veto is added as #visibility, #loyalty or #ease
+    callUrl: "https://go.creatingthroughenergy.com/book"
+  };
+
+  /* ---------- the questions ---------- */
+  var SCORED = [
+    { q: "You’ve finished something you’re proud of. A program, a piece of writing, an offer. What happens next?",
+      a: { V: "It needs one more pass before anyone sees it.",
+           L: "I play it down around the people closest to me.",
+           E: "It came together too easily, so I don’t trust it." } },
+    { q: "A month goes better than you expected. Money comes in without a fight. What’s your first private reaction?",
+      a: { V: "I’d rather nobody knew.",
+           L: "I think of someone I love who’s struggling, and the good feeling fades.",
+           E: "I hold my breath and wait for the other shoe." } },
+    { q: "You’re about to say your price out loud. Or ask for the raise.",
+      a: { V: "My throat tightens. I’d rather put it in an email.",
+           L: "I think of someone I love who could never pay that, and the number comes down.",
+           E: "I add more to the offer until it feels like I’ve earned it." } },
+    { q: "You want something just for you. It isn’t cheap, and you can afford it.",
+      a: { V: "I’d buy it, and hope nobody notices.",
+           L: "I talk myself out of it, then spend the same on someone else.",
+           E: "I tell myself I’ll get it once I’ve hit the next goal." } },
+    { q: "Someone offers to help, to pay, or to hand you something for nothing.",
+      a: { V: "I don’t like the attention. I change the subject.",
+           L: "I think of who needs it more than I do.",
+           E: "I can’t take it in. I didn’t earn it." } },
+    { q: "The bigger opportunity shows up. The stage, the client, the role.",
+      a: { V: "I picture everyone watching if I get it wrong.",
+           L: "I think about what it would change with the people who knew me before.",
+           E: "I think about how much harder I’d have to work to keep it." } },
+    { q: "In the house you grew up in, which lesson was loudest?",
+      a: { V: "Don’t draw attention to yourself.",
+           L: "Don’t forget where you come from.",
+           E: "Nothing worth having comes easy." } },
+    { q: "Picture actually arriving. The income, the freedom, all of it. Underneath the excitement, what’s the first flicker?",
+      a: { V: "People will look at me differently.",
+           L: "Someone I love won’t be coming with me.",
+           E: "It won’t last, or I’ll have to run twice as hard to keep it." } }
+  ];
+  var SAY = "More money than I’ve ever had is on its way to me.";
+  var BODY = [
+    { id: "chest", label: "My chest" },
+    { id: "throat", label: "My throat" },
+    { id: "belly", label: "My belly" },
+    { id: "other", label: "Somewhere else" },
+    { id: "none", label: "Nothing I could feel" }
+  ];
+  var NEXT = [
+    { id: "yes", label: "Yes. I have a business or practice." },
+    { id: "side", label: "I’m building one alongside a job." },
+    { id: "no", label: "No. My income comes from somewhere else." }
+  ];
+  var NAMES = { V: "Visibility Veto", L: "Loyalty Veto", E: "Ease Veto" };
+  var SLUG = { V: "visibility", L: "loyalty", E: "ease" };
+  var TOTAL = 11;
+
+  /* ---------- scoring: one point per answer; ties go to the veto picked most recently ---------- */
+  function rank(answers) {
+    var s = { V: 0, L: 0, E: 0 }, last = { V: -1, L: -1, E: -1 };
+    answers.forEach(function (a, i) { if (a) { s[a] += 1; last[a] = i; } });
+    var order = ["V", "L", "E"].sort(function (a, b) { return (s[b] - s[a]) || (last[b] - last[a]); });
+    return { veto: order[0], second: s[order[1]] > 0 ? order[1] : null, scores: s };
+  }
+
+  /* ---------- the three result pages ---------- */
+  var RESULTS = {
+    V: {
+      open: "Somewhere along the way, being seen got paired with a cost. So every time you get close to being seen at your real size, your body votes no before your mind gets a say.",
+      moments: [
+        "You know that moment when the post is written, your thumb is over the button, and suddenly it needs one more edit?",
+        "Or when someone asks what you do, and you hear yourself give the small version?",
+        "Or when the thing is finished, has been finished for a while, and you’re still waiting to feel sure before anyone gets to look at it?"
+      ],
+      tell: ["That last one is the tell. A body that reads being seen as danger will always ask for certainty first… and certainty never comes."],
+      ask: "Ask yourself who would see you if you finished it. That’s the spot your body is guarding.",
+      why: [
+        { p: "You’ve read the books. You’ve done the programs. You could probably teach this stuff." },
+        { p: "A client I’ll call D. had done all of it too. A well-known mindset program, twice. An 18-month mastermind. Six months of tapping. Here’s how she put it to me:" },
+        { said: "“Standing in front of a mirror saying stupid affirmations doesn’t do a damn thing for me.”" },
+        { p: "She wasn’t lazy, and she wasn’t doing it wrong. Neither are you." }
+      ],
+      protect: [
+        "At some point, staying small was the smart move. It kept you safe, or kept the peace, or kept you from being a target. Your body learned that lesson well, and it has been running it ever since.",
+        "Nothing in you is broken. Something in you is protecting.",
+        "And when your body gets a new answer to “is it safe to be seen?”… that moment with your thumb over the button stops being a fight. You just press it."
+      ],
+      reset: "Do it right before the next time someone is about to see your work."
+    },
+    L: {
+      open: "Somewhere along the way, having more got paired with losing someone. So every time you get close to having more than the people you love, your body votes no before your mind gets a say.",
+      moments: [
+        "You know that moment when good news lands, and before you’ve even felt it, you’re working out how to tell your family… or whether to tell them at all?",
+        "Or when you catch yourself making the win smaller in the retelling?",
+        "Or when you can spend on everyone else without a flinch, but something for you needs a reason?"
+      ],
+      tell: ["That last one is the tell. A body running this veto will let more come in, as long as it’s for somebody else."],
+      ask: "Ask yourself who you’d be moving ahead of if you finished it. That’s the spot your body is guarding.",
+      why: [
+        { p: "You’ve read the books. You’ve done the programs. You could probably teach this stuff." },
+        { p: "And your mind already agrees with every word of it. You know your growth doesn’t take anything from the people you love. You could say that sentence in your sleep." },
+        { p: "Your body is the one that hasn’t found out." }
+      ],
+      protect: [
+        "For a child, belonging is survival. If wanting more, having more, or being more ever put your place in the family at risk, your body made the only sane choice available. It chose belonging.",
+        "It’s still choosing it. Every time.",
+        "Nothing in you is broken. Something in you is protecting.",
+        "And when your body learns it can have more and still belong… that moment when the good news lands changes. You don’t shrink it. You just get to feel it."
+      ],
+      reset: "Do it the next time good news lands, before you decide how small to make it."
+    },
+    E: {
+      open: "Somewhere along the way, struggle got paired with safety. Earning it the hard way was how you stayed good, stayed worthy, stayed ready. So when life starts to get easy, your body reads it as a warning and votes no before your mind gets a say.",
+      moments: [
+        "You know that moment when a month goes well, money comes in without a fight, and instead of relief you feel… suspicious?",
+        "Or when things finally get calm, and you go find something to fix?",
+        "Or when everything is done, you sit down to rest, and your body won’t let you?"
+      ],
+      tell: [
+        "That first one is the tell. A body running this veto isn’t afraid of failing. It’s afraid of arriving.",
+        "You may even hear it in your own words: more money means more work, and more to carry."
+      ],
+      ask: "Ask yourself what would get easier if you finished it. That’s the spot your body is guarding.",
+      why: [
+        { p: "You’ve read the books. You’ve done the programs. You could probably teach this stuff." },
+        { p: "So could I, back when I was broke. Two-bedroom apartment. Reading the books every single day." },
+        { p: "And I kept seeing coins on the sidewalk. A nickel here, a nickel there. Free money, right at my feet." },
+        { p: "I scoffed at it. I said, “No. That thing’s not going to get me anything.”" },
+        { p: "I did that for months." },
+        { p: "I knew every principle. My body still couldn’t take what came easy." }
+      ],
+      protect: [
+        "If hard work was how you earned your place, then ease feels like cheating. Or like the quiet right before something goes wrong.",
+        "So your body keeps a little struggle on hand. It’s what safe has always felt like.",
+        "Nothing in you is broken. Something in you is protecting.",
+        "And when your body learns that easy is safe… the good month just gets to be a good month. You sit down, and you actually rest."
+      ],
+      reset: "Do it the next time things go well and you feel the pull to go find a problem."
+    }
+  };
+  var DOMINO = "You can’t believe your way into a reality your body still codes as dangerous. The affirmation goes in through the mind. The veto lives in the body. The two never meet.";
+
+  /* ---------- state ---------- */
+  var STEPS = ["intro", "q", "q", "q", "q", "q", "q", "q", "q", "body", "sentence", "next", "gate", "result"];
+  var RESULT_STEP = STEPS.length - 1;
+  var SAMPLE = { name: "Susan", sentence: "launching the program I finished two years ago", body: "chest", second: { V: "E", L: "V", E: "L" } };
+
+  function shuffled() {
+    var a = ["V", "L", "E"];
+    for (var i = a.length - 1; i > 0; i--) { var j = Math.floor(Math.random() * (i + 1)); var t = a[i]; a[i] = a[j]; a[j] = t; }
+    return a;
+  }
+  function fresh() {
+    return {
+      step: 0, answers: [null, null, null, null, null, null, null, null],
+      order: SCORED.map(shuffled), said: false, body: null, sentence: "", business: null,
+      name: "", email: "", sampleVeto: null, forceClose: null
+    };
+  }
+  var state = fresh();
+
+  /* ---------- small DOM helper ---------- */
+  function h(tag, props) {
+    var n = document.createElement(tag), k;
+    for (k in (props || {})) {
+      var v = props[k];
+      if (k === "class") n.className = v;
+      else if (k.slice(0, 2) === "on") n.addEventListener(k.slice(2), v);
+      else if (v === true) n.setAttribute(k, "");
+      else if (v !== false && v != null) n.setAttribute(k, v);
+    }
+    for (var i = 2; i < arguments.length; i++) {
+      var c = arguments[i];
+      (Array.isArray(c) ? c : [c]).forEach(function (x) {
+        if (x == null || x === false) return;
+        n.append(x.nodeType ? x : document.createTextNode(String(x)));
+      });
+    }
+    return n;
+  }
+  function ps(list, cls) { return list.map(function (t) { return h("p", cls ? { class: cls } : null, t); }); }
+
+  var stage = document.getElementById("stage");
+  var count = document.getElementById("count");
+  var bar = document.getElementById("bar");
+  var fill = document.getElementById("bar-fill");
+
+  function go(i) { state.step = i; render(); }
+  function backBtn() { return h("button", { class: "back", type: "button", onclick: function () { go(state.step - 1); } }, "Back"); }
+  function pickThenAdvance(set) {
+    return function (ev) {
+      set();
+      var btns = ev.currentTarget.parentNode.querySelectorAll(".choice");
+      Array.prototype.forEach.call(btns, function (b) { b.setAttribute("aria-pressed", b === ev.currentTarget ? "true" : "false"); });
+      var at = state.step;
+      setTimeout(function () { if (state.step === at) go(at + 1); }, 240);
+    };
+  }
+
+  /* ---------- screens ---------- */
+  function introScreen() {
+    return h("section", { class: "screen intro" },
+      h("h1", { tabindex: "-1" }, "For the person who’s done the work and keeps arriving ", h("em", null, "one step away.")),
+      h("div", { class: "prose" },
+        h("p", null, "You don’t have a discipline problem. Your body has been voting no."),
+        h("p", null, "There are three ways it does that. This shows you which one is yours."),
+        h("p", null, "Eight moments, then three quick things about you. Pick the answer that sounds most like you, even if none is exact. Go with your first one. Don’t think it through."),
+        h("p", { class: "quiet" }, "No answer is the good one. It takes about three minutes.")),
+      h("div", { class: "actions" }, h("button", { class: "btn", type: "button", onclick: function () { go(1); } }, "Show me")));
+  }
+
+  function scoredScreen(i) {
+    var item = SCORED[i];
+    return h("section", { class: "screen" },
+      h("h1", { tabindex: "-1" }, item.q),
+      h("div", { class: "choices" }, state.order[i].map(function (v) {
+        return h("button", { class: "choice", type: "button", "aria-pressed": state.answers[i] === v ? "true" : "false",
+          onclick: pickThenAdvance(function () { state.answers[i] = v; }) }, item.a[v]);
+      })),
+      i > 0 ? backBtn() : null);
+  }
+
+  function bodyScreen() {
+    var after = h("div", { class: "screen", hidden: !state.said },
+      h("p", null, "Mine goes straight to my chest. Where did yours go?"),
+      h("div", { class: "choices" }, BODY.map(function (o) {
+        return h("button", { class: "choice", type: "button", "aria-pressed": state.body === o.id ? "true" : "false",
+          onclick: pickThenAdvance(function () { state.body = o.id; }) }, o.label);
+      })));
+    var saidBtn = h("div", { class: "actions", hidden: state.said },
+      h("button", { class: "btn", type: "button", onclick: function () {
+        state.said = true; saidBtn.hidden = true; after.hidden = false;
+        var first = after.querySelector(".choice"); if (first) first.focus({ preventScroll: true });
+        after.scrollIntoView({ block: "nearest", behavior: "smooth" });
+      } }, "I said it"));
+    return h("section", { class: "screen" },
+      h("h1", { tabindex: "-1" }, "Now one thing that isn’t a question."),
+      h("p", null, "Say this out loud. Actually out loud."),
+      h("div", { class: "saywrap" }, h("p", { class: "say" }, "“" + SAY + "”")),
+      saidBtn, after, backBtn());
+  }
+
+  function sentenceScreen() {
+    var err = h("p", { class: "error", role: "alert", hidden: true }, "Type one line to finish the sentence.");
+    var left = h("span", null, "");
+    var box = h("textarea", { id: "f-sentence", maxlength: "140", rows: "3", "aria-describedby": "f-sentence-help",
+      oninput: function () { state.sentence = box.value; left.textContent = box.value.length + " / 140"; err.hidden = true; } });
+    box.value = state.sentence;
+    left.textContent = box.value.length + " / 140";
+    function next(ev) {
+      ev.preventDefault();
+      state.sentence = box.value.trim();
+      if (!state.sentence) { err.hidden = false; box.focus(); return; }
+      go(state.step + 1);
+    }
+    return h("form", { class: "screen", novalidate: true, onsubmit: next },
+      h("h1", { tabindex: "-1" }, "Last one about you. Finish this sentence in your own words."),
+      h("div", { class: "field" },
+        h("label", { for: "f-sentence", class: "stem" }, "“The thing I keep almost doing is…”"),
+        box,
+        h("div", { class: "under" }, h("span", { id: "f-sentence-help" }, "One line is plenty. You’ll see it again on your result."), left)),
+      err,
+      h("div", { class: "actions" }, h("button", { class: "btn", type: "submit" }, "Next")),
+      backBtn());
+  }
+
+  function nextScreen() {
+    return h("section", { class: "screen" },
+      h("h1", { tabindex: "-1" }, "So I can point you to the right next step: right now, do you earn income from something of your own?"),
+      h("div", { class: "choices" }, NEXT.map(function (o) {
+        return h("button", { class: "choice", type: "button", "aria-pressed": state.business === o.id ? "true" : "false",
+          onclick: pickThenAdvance(function () { state.business = o.id; }) }, o.label);
+      })),
+      backBtn());
+  }
+
+  function gateScreen() {
+    var err = h("p", { class: "error", role: "alert", hidden: true }, "");
+    var name = h("input", { id: "f-name", type: "text", autocomplete: "given-name", autocapitalize: "words" });
+    var email = h("input", { id: "f-email", type: "email", autocomplete: "email", inputmode: "email", autocapitalize: "off" });
+    name.value = state.name; email.value = state.email;
+    var btn = h("button", { class: "btn", type: "submit" }, "Show me my veto");
+    // spam trap: people never see or fill this field, so anything in it means a bot
+    var trap = h("input", { id: "f-website", type: "text", tabindex: "-1", autocomplete: "off", "aria-hidden": "true", hidden: true });
+    function submit(ev) {
+      ev.preventDefault();
+      if (trap.value) { go(RESULT_STEP); return; }
+      var n = name.value.trim(), e = email.value.trim();
+      if (!n) { err.textContent = "Add your first name."; err.hidden = false; name.focus(); return; }
+      if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(e)) { err.textContent = "That email doesn’t look right. Check it and try again."; err.hidden = false; email.focus(); return; }
+      state.name = n; state.email = e; state.sampleVeto = null; state.forceClose = null;
+      btn.disabled = true; btn.textContent = "Opening your result…";
+      send(payload()).then(function () { go(RESULT_STEP); });
+    }
+    return h("form", { class: "screen", novalidate: true, onsubmit: submit },
+      h("h1", { tabindex: "-1" }, "Your result is ready."),
+      h("p", null, "Where should I send it?"),
+      h("div", { class: "field" }, h("label", { for: "f-name" }, "First name"), name),
+      h("div", { class: "field" }, h("label", { for: "f-email" }, "Email"), email),
+      trap, err,
+      h("div", { class: "actions" }, btn),
+      h("p", { class: "quiet" }, "You’ll see your result right away. You’ll also get my emails. Unsubscribe anytime."),
+      backBtn());
+  }
+
+  /* ---------- result ---------- */
+  function outcome() {
+    var r = state.sampleVeto
+      ? { veto: state.sampleVeto, second: SAMPLE.second[state.sampleVeto], scores: null }
+      : rank(state.answers);
+    r.close = state.forceClose || (state.business === "yes" ? "C" : "A");
+    return r;
+  }
+  function bodyLine() {
+    var lead = "And when you said “more money than I’ve ever had is on its way to me” out loud, ";
+    if (state.body === "none") return null;
+    if (state.body === "chest" || state.body === "throat" || state.body === "belly") {
+      return h("p", null, lead + "you felt it in your " + state.body + ". That wasn’t doubt. That was the veto.");
+    }
+    return h("p", null, lead + "your body answered. That wasn’t doubt. That was the veto.");
+  }
+  function link(label, url, ghost) {
+    return h("a", { class: "btn" + (ghost ? " ghost" : ""), href: url, target: "_blank", rel: "noopener" }, label);
+  }
+  function closing(o) {
+    var top = [
+      h("h2", null, "What this page can’t tell you"),
+      h("p", null, "This result tells you which veto your body is running. It can’t tell you your version of it."),
+      h("p", null, "Where it got installed. Where it’s costing you right now. What order to take it apart in.")
+    ];
+    var sign = [h("p", null, "Rooting for you."), h("p", { class: "sig" }, "Ramon")];
+    if (o.close === "C") {
+      return h("section", { class: "offer" }, top,
+        h("p", null, "You told me you already have something you’re building. That means this veto is sitting right on top of your income."),
+        h("p", null, "If you’d like help with that, you can book a Roadblock Assessment with me. It’s 45 minutes. We find where your body is saying no, and whether I’m the right person to help you change it."),
+        link("Book my Roadblock Assessment", CONFIG.callUrl), sign);
+    }
+    return h("section", { class: "offer" }, top,
+      o.second ? h("p", null, "Your answers also pointed to the " + NAMES[o.second] + ". It’s quieter, but it’s there, and the way the two work together is particular to you.") : null,
+      h("p", null, "You’ve had plenty of good information over the years. It was written for everyone. Your nervous system isn’t everyone’s."),
+      h("p", null, "That’s why I make the Safety Blueprint. You answer a set of questions, and I build your map by hand: 10 to 15 written pages, plus a video where I walk you through it myself."),
+      h("p", null, "It’s $149. If you’d like me to map yours, here’s how it works."),
+      link("Show me the Safety Blueprint", CONFIG.blueprintUrl + "#" + SLUG[o.veto]), sign);
+  }
+  function resultScreen() {
+    var o = outcome(), r = RESULTS[o.veto];
+    return h("article", { class: "screen" },
+      h("p", { class: "lede" }, "Your result"),
+      h("h1", { tabindex: "-1" }, state.name + ", your body is running ", h("em", null, "the " + NAMES[o.veto] + ".")),
+      h("div", { class: "letter" },
+        h("p", null, r.open),
+        h("h2", null, "You probably know these moments."),
+        ps(r.moments, "moment"),
+        ps(r.tell),
+        h("h2", null, "You told me the thing you keep almost doing is:"),
+        h("p", { class: "own" }, "“" + state.sentence + "”"),
+        h("p", null, r.ask),
+        bodyLine(),
+        h("h2", null, "Why the work you’ve done hasn’t moved this"),
+        r.why.map(function (b) { return b.said ? h("p", { class: "said" }, b.said) : h("p", null, b.p); }),
+        h("p", null, DOMINO),
+        h("h2", null, "This is protection, not a flaw"),
+        ps(r.protect),
+        h("section", { class: "letter reset" },
+          h("h2", null, "Your first tool"),
+          h("p", null, "You can’t talk a veto out of voting. Your body needs a different experience, not a better argument."),
+          h("p", null, "Start with the 5-Minute Nervous System Reset. Five minutes. Body first."),
+          h("p", null, r.reset),
+          link("Start the Reset", CONFIG.resetUrl, true))),
+      closing(o));
+  }
+
+  /* ---------- what gets sent with every submission ---------- */
+  function payload() {
+    var o = outcome();
+    return {
+      _subject: "Veto Quiz: " + NAMES[o.veto] + " (" + state.name + ")",
+      first_name: state.name, email: state.email,
+      veto: NAMES[o.veto], tag: "veto-" + SLUG[o.veto], second_veto: o.second ? NAMES[o.second] : "",
+      score_visibility: o.scores ? o.scores.V : "", score_loyalty: o.scores ? o.scores.L : "", score_ease: o.scores ? o.scores.E : "",
+      answers: SCORED.map(function (it, i) { return (i + 1) + ". " + it.q + " > " + (state.answers[i] ? it.a[state.answers[i]] : ""); }).join("\n"),
+      felt_it_in: state.body || "", their_sentence: state.sentence,
+      has_business: state.business || "", next_step: { A: "Safety Blueprint", C: "Roadblock Assessment" }[o.close]
+    };
+  }
+  function post(data) {
+    return fetch(CONFIG.submitUrl, {
+      method: "POST", headers: { "Content-Type": "application/json", "Accept": "application/json" }, body: JSON.stringify(data)
+    }).then(function (r) { if (!r.ok) throw new Error("status " + r.status); });
+  }
+  // Try twice, then show the result anyway: someone who finished the quiz always sees their result.
+  function send(data) {
+    if (!CONFIG.submitUrl) return Promise.resolve();
+    var stop = new Promise(function (res) { setTimeout(res, 9000); });
+    var tries = post(data).catch(function () { return post(data); }).catch(function () {});
+    return Promise.race([tries, stop]);
+  }
+
+  /* ---------- render ---------- */
+  function render() {
+    var i = state.step, kind = STEPS[i], screen;
+    if (kind === "intro") screen = introScreen();
+    else if (kind === "q") screen = scoredScreen(i - 1);
+    else if (kind === "body") screen = bodyScreen();
+    else if (kind === "sentence") screen = sentenceScreen();
+    else if (kind === "next") screen = nextScreen();
+    else if (kind === "gate") screen = gateScreen();
+    else screen = resultScreen();
+    stage.replaceChildren(screen);
+
+    var inQuiz = i >= 1 && i <= TOTAL, atGate = kind === "gate";
+    count.hidden = !inQuiz; bar.hidden = !(inQuiz || atGate);
+    if (inQuiz) count.textContent = i + " of " + TOTAL;
+    fill.style.width = atGate ? "100%" : Math.round((i / TOTAL) * 100) + "%";
+
+    var head = screen.querySelector("h1");
+    if (head) head.focus({ preventScroll: true });
+    window.scrollTo(0, 0);
+    syncPreview();
+  }
+
+  /* ---------- preview strip ---------- */
+  var CLOSES = { A: "Blueprint", C: "Call" };
+  function syncPreview() {
+    if (!CONFIG.preview) return;
+    var onResult = state.step === RESULT_STEP, o = onResult ? outcome() : null;
+    document.getElementById("preview-status").textContent = !onResult ? ""
+      : (state.sampleVeto ? "This is a sample result for Susan." : "This result is from your own answers.");
+    Array.prototype.forEach.call(document.querySelectorAll("#preview-vetoes .chip"), function (b) {
+      b.setAttribute("aria-pressed", onResult && o.veto === b.dataset.v ? "true" : "false");
+    });
+    Array.prototype.forEach.call(document.querySelectorAll("#preview-closes .chip"), function (b) {
+      b.setAttribute("aria-pressed", onResult && o.close === b.dataset.c ? "true" : "false");
+    });
+  }
+  function setupPreview() {
+    if (!CONFIG.preview) return;
+    document.getElementById("preview").hidden = false;
+    var vrow = document.getElementById("preview-vetoes"), crow = document.getElementById("preview-closes");
+    ["V", "L", "E"].forEach(function (v) {
+      vrow.append(h("button", { class: "chip", type: "button", "data-v": v, onclick: function () {
+        state.sampleVeto = v; state.name = SAMPLE.name; state.sentence = SAMPLE.sentence; state.body = SAMPLE.body;
+        go(RESULT_STEP);
+      } }, NAMES[v].replace(" Veto", "")));
+    });
+    ["A", "C"].forEach(function (c) {
+      crow.append(h("button", { class: "chip", type: "button", "data-c": c, onclick: function () {
+        state.forceClose = c;
+        if (state.step !== RESULT_STEP) {
+          state.sampleVeto = state.sampleVeto || "V"; state.name = SAMPLE.name; state.sentence = SAMPLE.sentence; state.body = SAMPLE.body;
+        }
+        go(RESULT_STEP);
+      } }, CLOSES[c]));
+    });
+    document.getElementById("preview-restart").addEventListener("click", function () { state = fresh(); render(); });
+  }
+
+  /* ---------- boot (keeps a viewer's place when the page is republished) ---------- */
+  function start(saved) {
+    if (saved && typeof saved.step === "number" && Array.isArray(saved.answers) && saved.answers.length === SCORED.length) {
+      var base = fresh(), k;
+      for (k in base) if (saved[k] !== undefined) base[k] = saved[k];
+      state = base;
+    }
+    setupPreview();
+    render();
+  }
+  var hot = window.claude && window.claude.hot;
+  try { if (hot && hot.snapshot) hot.snapshot(function () { return state; }); } catch (e) {}
+  if (hot && hot.ready) hot.ready(start); else start((hot && hot.data) || {});
+})();
+</script>
+</body>
+</html>
