@@ -209,6 +209,8 @@ p { margin: 0; }
 .offer h2 { margin-top: 0; }
 .offer .btn, .reset .btn { justify-self: start; margin-top: .4rem; }
 .sig { font: italic 500 1.7rem/1.1 var(--display); color: var(--gold); }
+.video { position: relative; aspect-ratio: 16 / 9; max-width: 100%; background: var(--panel); border: 1px solid var(--line); margin-top: .4rem; }
+.video iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
 
 .foot { font-size: .7rem; letter-spacing: .26em; text-transform: uppercase; color: var(--muted); }
 
@@ -251,7 +253,8 @@ p { margin: 0; }
   var CONFIG = {
     preview: false,          // shows the dashed strip at the top; set false on the live page
     submitUrl: "https://formspree.io/f/mnpjdekj",          // where name, email and answers are posted; empty means nothing is sent
-    resetUrl: "https://5minutereset.creatingthroughenergy.com",
+    resetVideoId: "yYqNrW21NJs",   // the 5-Minute Nervous System Reset video on YouTube
+    embedVideo: true,      // true on the live page: the Reset plays right on the result. Previews cannot embed video, so they link to it
     blueprintUrl: "https://www.creatingthroughenergy.com/blueprint/",   // the live Safety Blueprint sales page; the visitor's veto is added as #visibility, #loyalty or #ease
     callUrl: "https://go.creatingthroughenergy.com/book"
   };
@@ -575,6 +578,15 @@ p { margin: 0; }
   function link(label, url, ghost) {
     return h("a", { class: "btn" + (ghost ? " ghost" : ""), href: url, target: "_blank", rel: "noopener" }, label);
   }
+  function resetPlayer() {
+    if (!CONFIG.embedVideo) return link("Play the Reset", "https://www.youtube.com/watch?v=" + CONFIG.resetVideoId, true);
+    return h("div", { class: "video" }, h("iframe", {
+      src: "https://www.youtube-nocookie.com/embed/" + CONFIG.resetVideoId + "?rel=0&modestbranding=1&playsinline=1",
+      title: "The 5-Minute Nervous System Reset", loading: "lazy", allowfullscreen: true,
+      allow: "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share",
+      referrerpolicy: "strict-origin-when-cross-origin"
+    }));
+  }
   function closing(o) {
     var top = [
       h("h2", null, "What this page can’t tell you"),
@@ -619,7 +631,7 @@ p { margin: 0; }
           h("p", null, "You can’t talk a veto out of voting. Your body needs a different experience, not a better argument."),
           h("p", null, "Start with the 5-Minute Nervous System Reset. Five minutes. Body first."),
           h("p", null, r.reset),
-          link("Start the Reset", CONFIG.resetUrl, true))),
+          resetPlayer())),
       closing(o));
   }
 
