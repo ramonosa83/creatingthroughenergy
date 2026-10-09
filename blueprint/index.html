@@ -18,7 +18,7 @@
 [hidden] { display: none !important; }
 img { max-width: 100%; }
 /* Layout: one long reading column, written as a letter; ruled lists carry the facts, and the price is the only boxed object. */
-/* Single dark look on purpose: the locked CTE system (midnight, gold, Cormorant Garamond, Jost), matching the quiz she arrives from. */
+/* Single dark look on purpose: the locked CTE system (midnight, gold, Cormorant Garamond, Jost), matching the quiz people arrive from. */
 :root {
   color-scheme: dark;
   --midnight: #0D0D14;
@@ -149,7 +149,7 @@ details p { margin-top: .7rem; }
     <p>You’ve read the books. You’ve done the programs. You could probably teach this stuff.</p>
     <p class="moment">You know that moment when you’re about to say your price out loud, and your throat tightens, and you discount it before they even respond?</p>
     <p class="moment">Or the bold move you planned all week, and on Sunday night your body just… won’t let you press send?</p>
-    <p class="moment">Or the gap between the woman you are in your journal and the woman who shows up when it’s time to do the thing?</p>
+    <p class="moment">Or the gap between the person you are in your journal and the person who shows up when it’s time to do the thing?</p>
     <p>That isn’t a discipline problem. Your body is voting no.</p>
     <p class="strong">You can’t believe your way into a reality your body still codes as dangerous.</p>
   </section>
@@ -163,7 +163,7 @@ details p { margin-top: .7rem; }
   </section>
 
   <section class="block">
-    <h2>She had done everything.</h2>
+    <h2>D. had done everything.</h2>
     <p>A private client I’ll call D. had done all of it. A well-known mindset program, twice. An 18-month mastermind. Six months of tapping.</p>
     <p>Here’s how she put it to me:</p>
     <p class="said">“Standing in front of a mirror saying stupid affirmations doesn’t do a damn thing for me.”</p>
@@ -212,7 +212,7 @@ details p { margin-top: .7rem; }
     <h2>The map, not the journey</h2>
     <p>The Blueprint won’t do the work for you. It shows you where the work is, so you stop putting years into the wrong spot.</p>
     <p>Some people take the map and walk it on their own. Some want a guide beside them. Either is fine with me.</p>
-    <p>It’s for the woman who’s done the work and keeps arriving one step away. If you’re looking for one more thing to learn, this isn’t it.</p>
+    <p>It’s for the person who’s done the work and keeps arriving one step away. If you’re looking for one more thing to learn, this isn’t it.</p>
   </section>
 
   <section class="block">
@@ -274,7 +274,7 @@ details p { margin-top: .7rem; }
 
   Array.prototype.forEach.call(document.querySelectorAll("[data-buy]"), function (a) { a.href = CONFIG.stripeUrl; });
 
-  /* arriving from the quiz: the link carries her result, e.g. #loyalty */
+  /* arriving from the quiz: the link carries the visitor's result, e.g. #loyalty */
   function greet() {
     var key = (location.hash || "").replace("#", "").toLowerCase();
     var line = document.getElementById("from");
