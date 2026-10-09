@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>The Safety Blueprint · Creating Through Energy</title>
+<meta name="description" content="A written map of where your body is saying no, why, and where to start. Built by hand from your answers by Ramon Osa, with a personal video walkthrough.">
+<link rel="canonical" href="https://www.creatingthroughenergy.com/blueprint/">
+<meta property="og:title" content="The Safety Blueprint">
+<meta property="og:description" content="A written map of where your body is saying no, why, and where to start. Built by hand from your answers by Ramon Osa, with a personal video walkthrough.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://www.creatingthroughenergy.com/blueprint/">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='42' fill='%23C98F4E'/%3E%3Ccircle cx='50' cy='50' r='20' fill='%23F6F1E7'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500;1,600&family=Jost:wght@400;500&display=swap">
+<style>
+[hidden] { display: none !important; }
+img { max-width: 100%; }
+/* Layout: one long reading column, written as a letter; ruled lists carry the facts, and the price is the only boxed object. */
+/* Single dark look on purpose: the locked CTE system (midnight, gold, Cormorant Garamond, Jost), matching the quiz she arrives from. */
+:root {
+  color-scheme: dark;
+  --midnight: #0D0D14;
+  --panel: #161620;
+  --ivory: #EDE7DA;
+  --muted: #A8A294;
+  --gold: #C8AF78;
+  --gold-bright: #D9C391;
+  --line: rgba(200, 175, 120, .26);
+  --wash: rgba(200, 175, 120, .07);
+  --display: 'Cormorant Garamond', 'Iowan Old Style', 'Palatino Linotype', Georgia, serif;
+  --body: 'Jost', 'Avenir Next', 'Segoe UI', system-ui, sans-serif;
+}
+*, *::before, *::after { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: radial-gradient(56rem 30rem at 50% -10rem, rgba(200, 175, 120, .19), transparent 70%) no-repeat, var(--midnight);
+  background-color: var(--midnight);
+  color: var(--ivory);
+  font-family: var(--body);
+  font-size: 1.125rem;
+  line-height: 1.62;
+  -webkit-font-smoothing: antialiased;
+}
+.page {
+  max-width: 39rem;
+  margin-inline: auto;
+  padding-inline: 1.25rem;
+  padding-block: 1.5rem 3rem;
+  display: flex;
+  flex-direction: column;
+  gap: 4rem;
+}
+p, h1, h2, h3, dl, dd, ol { margin: 0; }
+ol { padding: 0; list-style: none; }
+h1, h2, h3 { font-family: var(--display); font-weight: 500; text-wrap: balance; }
+h1 { font-size: clamp(2.25rem, 8.2vw, 3.5rem); line-height: 1.07; }
+h1 em { font-style: italic; color: var(--gold-bright); }
+h2 { font-size: clamp(1.75rem, 6.2vw, 2.3rem); line-height: 1.15; }
+
+.wordmark { font-size: .7rem; font-weight: 500; letter-spacing: .3em; text-transform: uppercase; color: var(--gold); }
+.kicker { font-size: .78rem; font-weight: 500; letter-spacing: .24em; text-transform: uppercase; color: var(--gold); }
+.from { border-block: 1px solid var(--line); padding-block: .8rem; color: var(--gold-bright); font-size: 1rem; }
+
+.hero { display: grid; gap: 1.5rem; padding-top: 1.5rem; }
+.block { display: grid; gap: 1.05rem; }
+.block > h2 { margin-bottom: .35rem; }
+.moment { font: italic 500 1.4rem/1.35 var(--display); }
+.said { font: italic 500 1.5rem/1.32 var(--display); padding-left: 1.25rem; color: var(--gold-bright); }
+.strong { font: 500 1.6rem/1.25 var(--display); }
+
+.btn {
+  display: inline-block;
+  font: 500 1.05rem/1.2 var(--body);
+  letter-spacing: .03em;
+  text-decoration: none;
+  text-align: center;
+  color: var(--midnight);
+  background: var(--gold);
+  border: 1px solid var(--gold);
+  border-radius: 999px;
+  padding: 1.05rem 2rem;
+  transition: background .15s, transform .15s;
+}
+.btn:hover { background: var(--gold-bright); transform: translateY(-1px); }
+.btn:focus-visible, summary:focus-visible { outline: 2px solid var(--gold-bright); outline-offset: 3px; }
+.cta { display: flex; flex-wrap: wrap; align-items: center; gap: .75rem 1.25rem; }
+.cta span { color: var(--muted); font-size: 1rem; font-variant-numeric: tabular-nums; }
+
+/* ruled lists */
+.ruled { display: grid; }
+.ruled > div, .ruled > li { border-top: 1px solid var(--line); padding-block: 1.15rem; display: grid; gap: .3rem; }
+.ruled > :last-child { border-bottom: 1px solid var(--line); }
+.ruled dt, .ruled h3 { font: 500 1.5rem/1.2 var(--display); color: var(--gold-bright); }
+.steps { counter-reset: step; }
+.steps > li { counter-increment: step; grid-template-columns: 2.6rem minmax(0, 1fr); column-gap: .5rem; }
+.steps > li::before { content: counter(step); font: 500 2.4rem/1 var(--display); color: var(--gold); grid-row: span 2; }
+.looks { display: grid; grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr)); gap: 0 2rem; }
+.looks > div { border-top: 1px solid var(--line); padding-block: 1rem; display: grid; gap: .15rem; min-width: 0; }
+.looks dt { font-size: .78rem; font-weight: 500; letter-spacing: .2em; text-transform: uppercase; color: var(--gold); }
+.looks dd { font: 500 1.4rem/1.25 var(--display); }
+.looks dd small { display: block; font: 400 1rem/1.5 var(--body); color: var(--muted); margin-top: .2rem; }
+
+.offer {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  padding: 2rem 1.4rem;
+  display: grid;
+  gap: 1.1rem;
+  justify-items: start;
+}
+.price { font: 500 clamp(3.4rem, 14vw, 4.6rem)/1 var(--display); color: var(--gold-bright); font-variant-numeric: lining-nums; }
+.price small { font: 400 1rem/1 var(--body); color: var(--muted); letter-spacing: .02em; margin-left: .5rem; }
+.quiet { color: var(--muted); font-size: 1rem; }
+.sig { font: italic 500 1.7rem/1.1 var(--display); color: var(--gold); }
+
+details { border-top: 1px solid var(--line); padding-block: 1.05rem; }
+details:last-of-type { border-bottom: 1px solid var(--line); }
+summary { font: 500 1.4rem/1.25 var(--display); cursor: pointer; list-style: none; display: flex; justify-content: space-between; gap: 1rem; }
+summary::-webkit-details-marker { display: none; }
+summary::after { content: "+"; color: var(--gold); font-family: var(--body); font-weight: 400; }
+details[open] summary::after { content: "\2212"; }
+details p { margin-top: .7rem; }
+
+.foot { font-size: .7rem; letter-spacing: .26em; text-transform: uppercase; color: var(--muted); display: flex; flex-wrap: wrap; gap: .6rem 1.75rem; }
+.foot a { color: inherit; text-decoration: none; }
+.foot a:hover { color: var(--ivory); text-decoration: underline; }
+
+@media (prefers-reduced-motion: reduce) { .btn { transition: none; } }
+</style>
+</head>
+<body>
+<div class="page">
+  <header class="hero">
+    <span class="wordmark">Creating Through Energy</span>
+    <p class="kicker">The Safety Blueprint</p>
+    <p class="from" id="from" hidden></p>
+    <h1>Everything you’ve read was written for everyone. <em>Your nervous system isn’t everyone’s.</em></h1>
+    <p>The Safety Blueprint is a written map of where your body is saying no, why, and where to start. I build it by hand from your answers. Then I walk you through it on video, like I’m sitting across from you.</p>
+    <div class="cta">
+      <a class="btn" data-buy href="#">Get my Safety Blueprint</a>
+      <span>$149, one payment</span>
+    </div>
+  </header>
+
+  <section class="block">
+    <h2>You already know what to do.</h2>
+    <p>You’ve read the books. You’ve done the programs. You could probably teach this stuff.</p>
+    <p class="moment">You know that moment when you’re about to say your price out loud, and your throat tightens, and you discount it before they even respond?</p>
+    <p class="moment">Or the bold move you planned all week, and on Sunday night your body just… won’t let you press send?</p>
+    <p class="moment">Or the gap between the woman you are in your journal and the woman who shows up when it’s time to do the thing?</p>
+    <p>That isn’t a discipline problem. Your body is voting no.</p>
+    <p class="strong">You can’t believe your way into a reality your body still codes as dangerous.</p>
+  </section>
+
+  <section class="block">
+    <h2>Why nothing has stuck</h2>
+    <p>Every program gave you the same steps it gave everyone else. Good steps. Real teachers.</p>
+    <p>But the no in your body isn’t general. It was set in a particular house, around particular people, at moments only you lived through. It shows up in a particular place in your body, at a particular kind of moment.</p>
+    <p>A plan written for everyone can’t find that.</p>
+    <p>You weren’t doing it wrong. You were handed the wrong tool.</p>
+  </section>
+
+  <section class="block">
+    <h2>She had done everything.</h2>
+    <p>A private client I’ll call D. had done all of it. A well-known mindset program, twice. An 18-month mastermind. Six months of tapping.</p>
+    <p>Here’s how she put it to me:</p>
+    <p class="said">“Standing in front of a mirror saying stupid affirmations doesn’t do a damn thing for me.”</p>
+    <p class="said">“I knew I wasn’t lazy. I just couldn’t get it to work.”</p>
+    <p>She was right. She wasn’t lazy. All of that work went in through her mind, and her body never got the memo.</p>
+    <p>The Blueprint starts where that work never went. Your body, and what it learned.</p>
+  </section>
+
+  <section class="block">
+    <h2>What I send you</h2>
+    <dl class="ruled">
+      <div><dt>Your written Blueprint</dt><dd>10 to 15 pages about you and nobody else. Exactly where your system is bracing, and why.</dd></div>
+      <div><dt>Where to start</dt><dd>The tools to start working it, so you aren’t guessing at the first step.</dd></div>
+      <div><dt>A personal video</dt><dd>I walk you through all of it, like I’m sitting across from you.</dd></div>
+      <div><dt>An invitation, if you want it</dt><dd>If you’d like to go further together, I’ll tell you how. If you don’t, the map is yours to keep.</dd></div>
+    </dl>
+  </section>
+
+  <section class="block">
+    <h2>How it works</h2>
+    <ol class="ruled steps">
+      <li><h3>Pay once.</h3><p>$149. One payment.</p></li>
+      <li><h3>Answer the intake.</h3><p>It opens as soon as you check out. It takes about 15 minutes, and it goes deeper than anyone has probably ever asked you. That’s the point. It’s completely confidential, and I read every one myself.</p></li>
+      <li><h3>Get your Blueprint.</h3><p>Within a few days, your written Blueprint and your video arrive in your inbox.</p></li>
+    </ol>
+    <div class="cta">
+      <a class="btn" data-buy href="#">Get my Safety Blueprint</a>
+      <span>$149, one payment</span>
+    </div>
+  </section>
+
+  <section class="block">
+    <h2>What the intake looks at</h2>
+    <p>Six places, and how they connect in you.</p>
+    <dl class="looks">
+      <div><dt>The ceiling</dt><dd>Where you keep landing<small>The thing you keep reaching for, and keep not becoming.</small></dd></div>
+      <div><dt>The pattern</dt><dd>The snap-back<small>What shows up when things start really working.</small></dd></div>
+      <div><dt>The body</dt><dd>What your system does<small>When you charge more, receive more, or are truly seen.</small></dd></div>
+      <div><dt>The origin</dt><dd>Where it was set<small>What money, success, and being seen felt like in your home.</small></dd></div>
+      <div><dt>The safety behaviors</dt><dd>The disguised stuckness<small>What looks like progress and quietly keeps you where you are.</small></dd></div>
+      <div><dt>The cost</dt><dd>What’s at stake<small>What staying at this level is taking from you.</small></dd></div>
+    </dl>
+  </section>
+
+  <section class="block">
+    <h2>The map, not the journey</h2>
+    <p>The Blueprint won’t do the work for you. It shows you where the work is, so you stop putting years into the wrong spot.</p>
+    <p>Some people take the map and walk it on their own. Some want a guide beside them. Either is fine with me.</p>
+    <p>It’s for the woman who’s done the work and keeps arriving one step away. If you’re looking for one more thing to learn, this isn’t it.</p>
+  </section>
+
+  <section class="block">
+    <h2>Why I build these by hand</h2>
+    <p>I’m not the guy who figured this out on day one.</p>
+    <p>I was broke, in a two-bedroom apartment, reading the books every single day. I kept seeing nickels on the sidewalk, and I scoffed at them. For months.</p>
+    <p>I knew every principle. My body still said no.</p>
+    <p>The house I could once only see with my eyes closed didn’t show up because I believed harder. It showed up after I stopped my body from vetoing it.</p>
+    <p>Your veto is yours. So I read every intake myself, and I build each Blueprint one at a time.</p>
+  </section>
+
+  <section class="offer">
+    <p class="kicker">The Safety Blueprint</p>
+    <p>Your written Blueprint, your personal video, and where to start.</p>
+    <p class="price">$149<small>one payment</small></p>
+    <a class="btn" data-buy href="#">Get my Safety Blueprint</a>
+    <p class="quiet">After checkout you’ll go straight to your intake.</p>
+    <p>Rooting for you.</p>
+    <p class="sig">Ramon</p>
+  </section>
+
+  <section class="block">
+    <h2>Questions</h2>
+    <div>
+      <details>
+        <summary>Is this coaching?</summary>
+        <p>No. It’s a written map and a personal video. If you’d like to work together afterward, I’ll tell you how. There’s no pressure either way.</p>
+      </details>
+      <details>
+        <summary>Who sees my answers?</summary>
+        <p>I do. Your intake is confidential, and I read every one personally.</p>
+      </details>
+      <details>
+        <summary>How long does it take?</summary>
+        <p>About 15 minutes for you to answer. Within a few days, your Blueprint and your video are in your inbox.</p>
+      </details>
+      <details>
+        <summary>I’ve done so many programs. How is this different?</summary>
+        <p>A program gives everyone the same steps. This isn’t a program. It’s about one nervous system. Yours.</p>
+      </details>
+    </div>
+  </section>
+
+  <footer class="foot">
+    <span>Wealth from Safety</span>
+    <a href="https://www.creatingthroughenergy.com/privacy.html">Privacy</a>
+    <a href="https://www.creatingthroughenergy.com/terms.html">Terms</a>
+  </footer>
+</div>
+
+<script>
+(function () {
+  "use strict";
+  /* settings */
+  var CONFIG = {
+    stripeUrl: "https://buy.stripe.com/cNi28t53y65mbzRbjeeME0j"   // the $149 payment link; it should redirect to the intake after payment
+  };
+  var VETO = { visibility: "Visibility Veto", loyalty: "Loyalty Veto", ease: "Ease Veto" };
+
+  Array.prototype.forEach.call(document.querySelectorAll("[data-buy]"), function (a) { a.href = CONFIG.stripeUrl; });
+
+  /* arriving from the quiz: the link carries her result, e.g. #loyalty */
+  function greet() {
+    var key = (location.hash || "").replace("#", "").toLowerCase();
+    var line = document.getElementById("from");
+    if (VETO[key]) {
+      line.textContent = "Your result was the " + VETO[key] + ". This is how I map your version of it.";
+      line.hidden = false;
+    } else {
+      line.hidden = true;
+    }
+  }
+  greet();
+  window.addEventListener("hashchange", greet);
+})();
+</script>
+</body>
+</html>
