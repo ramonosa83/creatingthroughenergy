@@ -4,10 +4,10 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>Which veto is your body running? · Creating Through Energy</title>
-<meta name="description" content="For the person who's done the work and keeps arriving one step away. Eleven questions, about three minutes, and you'll see which of three vetoes your body is running.">
+<meta name="description" content="If you've done the work and still feel one step away, you don't have a discipline problem. Your body has been voting no. Three minutes to see which of the three ways is yours.">
 <link rel="canonical" href="https://www.creatingthroughenergy.com/quiz/">
 <meta property="og:title" content="Which veto is your body running?">
-<meta property="og:description" content="For the person who's done the work and keeps arriving one step away. Eleven questions, about three minutes, and you'll see which of three vetoes your body is running.">
+<meta property="og:description" content="If you've done the work and still feel one step away, you don't have a discipline problem. Your body has been voting no. Three minutes to see which of the three ways is yours.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://www.creatingthroughenergy.com/quiz/">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='42' fill='%23C98F4E'/%3E%3Ccircle cx='50' cy='50' r='20' fill='%23F6F1E7'/%3E%3C/svg%3E">
@@ -468,12 +468,10 @@ p { margin: 0; }
   /* ---------- screens ---------- */
   function introScreen() {
     return h("section", { class: "screen intro" },
-      h("h1", { tabindex: "-1" }, "For the person who’s done the work and keeps arriving ", h("em", null, "one step away.")),
+      h("h1", { tabindex: "-1" }, "If you’ve done the work and still feel ", h("em", null, "one step away…")),
       h("div", { class: "prose" },
         h("p", null, "You don’t have a discipline problem. Your body has been voting no."),
-        h("p", null, "There are three ways it does that. This shows you which one is yours."),
-        h("p", null, "Eight moments, then three quick things about you. Pick the answer that sounds most like you, even if none is exact. Go with your first one. Don’t think it through."),
-        h("p", { class: "quiet" }, "No answer is the good one. It takes about three minutes.")),
+        h("p", null, "There are three ways it does that. This shows you which one is yours.")),
       h("div", { class: "actions" }, h("button", { class: "btn", type: "button", onclick: function () { go(1); } }, "Show me")));
   }
 
@@ -485,7 +483,7 @@ p { margin: 0; }
         return h("button", { class: "choice", type: "button", "aria-pressed": state.answers[i] === v ? "true" : "false",
           onclick: pickThenAdvance(function () { state.answers[i] = v; }) }, item.a[v]);
       })),
-      i > 0 ? backBtn() : null);
+      i > 0 ? backBtn() : h("p", { class: "quiet" }, "Pick the one that sounds most like you. Go with your first answer."));
   }
 
   function bodyScreen() {
