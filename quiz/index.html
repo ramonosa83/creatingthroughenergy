@@ -261,7 +261,7 @@ p { margin: 0; }
   /* ---------- settings: the only block that changes between preview and live ---------- */
   var CONFIG = {
     preview: false,          // shows the dashed strip at the top; set false on the live page
-    submitUrl: "https://formspree.io/f/mnpjdekj",          // where name, email and answers are posted; empty means nothing is sent
+    submitUrl: "",          // optional second copy to a form service such as Formspree; left empty on the live page since Oct 2026
     hookUrl: "https://hooks.zapier.com/hooks/catch/3920801/4134dni/",            // Zapier webhook that passes each lead on to Beehiiv; empty means it is skipped
     resetVideoId: "s2zF3c27fzE",   // the 5-Minute Nervous System Reset on YouTube: the version with the offer at the end cut off
     resetEnd: 0,            // optional stop time in seconds; 0 plays the whole video. Not needed now that the video itself is cut
@@ -704,6 +704,8 @@ p { margin: 0; }
       veto: NAMES[o.veto], tag: "veto-" + SLUG[o.veto], second_veto: o.second ? NAMES[o.second] : "",
       score_visibility: o.scores ? o.scores.V : "", score_loyalty: o.scores ? o.scores.L : "", score_ease: o.scores ? o.scores.E : "",
       answers: SCORED.map(function (it, i) { return (i + 1) + ". " + it.q + " > " + (state.answers[i] ? it.a[state.answers[i]] : ""); }).join("\n"),
+      // one short line for the subscriber record: the three scores, then the letter picked on each of the eight questions
+      answers_short: o.scores ? "Visibility " + o.scores.V + ", Loyalty " + o.scores.L + ", Ease " + o.scores.E + ". Picks 1-8: " + state.answers.map(function (a) { return a || "-"; }).join(" ") : "",
       felt_it_in: state.body || "", their_sentence: state.sentence,
       has_business: state.business || "", next_step: { A: "Safety Blueprint", C: "Roadblock Assessment" }[o.close]
     };
@@ -713,12 +715,13 @@ p { margin: 0; }
       method: "POST", headers: { "Content-Type": "application/json", "Accept": "application/json" }, body: JSON.stringify(data)
     }).then(function (r) { if (!r.ok) throw new Error("status " + r.status); });
   }
+  // The lead goes to Zapier as plain form fields, sent in a way browsers allow without a pre-check. Zapier passes it on to Beehiiv.
   // Try twice, then show the result anyway: someone who finished the quiz always sees their result.
-  // Zapier gets the same lead as plain form fields, sent in a way browsers allow without a pre-check.
   function postHook(data) {
     var body = new URLSearchParams();
     Object.keys(data).forEach(function (k) { if (k.charAt(0) !== "_") body.append(k, data[k] == null ? "" : String(data[k])); });
-    return fetch(CONFIG.hookUrl, { method: "POST", mode: "no-cors", keepalive: true, body: body }).catch(function () {});
+    function fire() { return fetch(CONFIG.hookUrl, { method: "POST", mode: "no-cors", keepalive: true, body: body }); }
+    return fire().catch(fire).catch(function () {});
   }
   function send(data) {
     var jobs = [];
