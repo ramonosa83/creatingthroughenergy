@@ -334,13 +334,13 @@ p { margin: 0; }
   /* ---------- the three result pages ---------- */
   var RESULTS = {
     V: {
-      open: "Somewhere along the way, being seen got paired with a cost. So every time you get close to being seen at your real size, your body votes no before your mind gets a say.",
+      open: "Somewhere along the way, being “seen” got associated with danger. So every time you get close to being seen doing your thing, your body votes NO before your mind gets a say.",
       moments: [
-        "You know that moment when the post is written, your thumb is over the button, and suddenly it needs one more edit?",
-        "Or when someone asks what you do, and you hear yourself give the small version?",
+        "You know that moment when the post is written, your finger is over the button, and suddenly it needs one more edit?",
+        "Or when someone asks what you do, and you hear yourself give the shrunken version?",
         "Or when the thing is finished, has been finished for a while, and you’re still waiting to feel sure before anyone gets to look at it?"
       ],
-      tell: ["That last one is the tell. A body that reads being seen as danger will always ask for certainty first… and certainty never comes."],
+      tell: ["That last one tells you the whole story. A body that reads being seen as dangerous will always ask for certainty first… and certainty never comes."],
       ask: "Ask yourself who would see you if you finished it. That’s the spot your body is guarding.",
       why: [
         { p: "You’ve read the books. You’ve done the programs. You could probably teach this stuff." },
@@ -406,7 +406,7 @@ p { margin: 0; }
       reset: "Do it the next time things go well and you feel the pull to go find a problem."
     }
   };
-  var DOMINO = "You can’t believe your way into a reality your body still codes as dangerous. The affirmation goes in through the mind. The veto lives in the body. The two never meet.";
+  var DOMINO = "You can’t “believe” your way into a reality your body thinks is dangerous. The affirmation lives in the mind. The veto lives in the body. The two never meet.";
 
   /* ---------- state ---------- */
   var STEPS = ["intro", "q", "q", "q", "q", "q", "q", "q", "q", "body", "sentence", "next", "gate", "result"];
@@ -674,21 +674,21 @@ p { margin: 0; }
       h("h1", { tabindex: "-1" }, state.name + ", your body is running ", h("em", null, "the " + NAMES[o.veto] + ".")),
       h("div", { class: "letter" },
         h("p", null, r.open),
-        h("h2", null, "You probably know these moments."),
+        h("h2", null, "Does this sound familiar?"),
         ps(r.moments, "moment"),
         ps(r.tell),
         h("h2", null, "You told me the thing you keep almost doing is:"),
         h("p", { class: "own" }, "“" + state.sentence + "”"),
         h("p", null, r.ask),
         bodyLine(),
-        h("h2", null, "Why the work you’ve done hasn’t moved this"),
+        h("h2", null, "Why the work you’ve done hasn’t changed this"),
         r.why.map(function (b) { return b.said ? h("p", { class: "said" }, b.said) : h("p", null, b.p); }),
         h("p", null, DOMINO),
         h("h2", null, "This is protection, not a flaw"),
         ps(r.protect),
         h("section", { class: "letter reset" },
-          h("h2", null, "Your first tool"),
-          h("p", null, "You can’t talk a veto out of voting. Your body needs a different experience, not a better argument."),
+          h("h2", null, "Your first step"),
+          h("p", null, "A veto overrides intention. Your body needs a different experience, not a better argument."),
           h("p", null, "Start with the 5-Minute Nervous System Reset. Five minutes. Body first."),
           h("p", null, r.reset),
           resetPlayer())),
