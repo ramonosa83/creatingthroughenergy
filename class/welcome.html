@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>You're in — Your Body Has Already Decided</title>
+<meta name="robots" content="noindex">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='42' fill='%23C98F4E'/%3E%3Ccircle cx='50' cy='50' r='20' fill='%23F6F1E7'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{--bg:#0D0D14;--bg2:#13131C;--bg3:#1A1A25;--gold:#C8AF78;--gold2:#E3CC96;--text:#ECE6DA;--muted:#A79F91;--line:rgba(200,175,120,.18)}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:'Jost',system-ui,sans-serif;font-weight:300;background:var(--bg);color:var(--text);line-height:1.7;font-size:17px;-webkit-font-smoothing:antialiased}
+  h1,h2,h3{font-family:'Cormorant Garamond',Georgia,serif;font-weight:500;line-height:1.12;color:#fff}
+  h2{font-size:clamp(28px,4vw,38px);margin:12px 0 22px}
+  p{margin-bottom:16px}
+  strong{font-weight:500;color:#fff}
+  a{color:var(--gold)}
+  .wrap{max-width:720px;margin:0 auto;padding:0 20px}
+  section{padding:48px 0}
+  .eyebrow{font-size:12px;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);font-weight:500}
+
+  .hero{position:relative;overflow:hidden;text-align:center;padding:56px 0 54px}
+  .hero:before{content:"";position:absolute;inset:0;background:radial-gradient(800px 480px at 50% -10%,rgba(200,175,120,.22),transparent 62%)}
+  .hero .wrap{position:relative}
+  .mark{width:72px;margin:0 auto 26px}
+  .mark svg{width:100%;height:auto;display:block}
+  .hero h1{font-size:clamp(44px,8vw,76px);margin:14px 0 12px}
+  .hero p{color:var(--text);max-width:520px;margin:0 auto;font-size:18px}
+  .count{display:flex;gap:10px;justify-content:center;margin-top:32px;flex-wrap:wrap}
+  .count div{background:rgba(200,175,120,.06);border:1px solid var(--line);border-radius:12px;padding:12px 4px;min-width:78px}
+  .count b{display:block;font-family:'Cormorant Garamond',serif;font-size:32px;color:var(--gold2);line-height:1;font-weight:500}
+  .count span{font-size:10.5px;letter-spacing:.15em;text-transform:uppercase;color:var(--muted)}
+
+  .card{background:var(--bg2);border:1px solid var(--line);border-radius:22px;padding:36px 32px}
+  .big{font-family:'Cormorant Garamond',serif;font-size:32px;font-weight:500;line-height:1.15;color:#fff}
+  .time{font-size:22px;font-family:'Cormorant Garamond',serif;color:var(--gold2);font-weight:500;margin-top:4px}
+  .local{font-size:14px;color:var(--muted);margin-top:8px;margin-bottom:26px}
+  .btn{display:inline-block;background:var(--gold);color:#0D0D14;text-decoration:none;padding:17px 32px;border-radius:999px;font-weight:500;font-size:16.5px;transition:transform .15s,background .15s;border:1px solid var(--gold)}
+  .btn:hover{transform:translateY(-2px);background:var(--gold2)}
+  .btn.ghost{background:transparent;color:var(--gold2);border-color:var(--gold)}
+  .btn.ghost:hover{background:rgba(200,175,120,.1)}
+  .btn.block{display:block;text-align:center;width:100%}
+  .btnrow{display:flex;gap:12px;flex-wrap:wrap;margin-top:16px}
+  .btnrow .btn{flex:1;text-align:center;min-width:200px;font-size:15px;padding:14px 20px}
+  .codes{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:24px}
+  .code{background:var(--bg3);border-radius:12px;padding:14px 16px}
+  .code span{display:block;font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);font-weight:500;margin-bottom:3px}
+  .code b{font-size:20px;font-family:'Cormorant Garamond',serif;letter-spacing:.5px;color:#fff;font-weight:500}
+  .copy{float:right;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);background:none;border:none;cursor:pointer;font-weight:500;font-family:inherit;padding:4px 0}
+  details.more{margin-top:22px;border-top:1px solid var(--line);padding-top:16px}
+  details.more summary{cursor:pointer;font-size:14px;font-weight:500;color:var(--muted);list-style:none}
+  details.more summary::-webkit-details-marker{display:none}
+  details.more summary:after{content:" +";color:var(--gold)}
+  details.more[open] summary:after{content:" –"}
+  details.more .body{font-size:14px;color:var(--text);margin-top:14px;line-height:1.8}
+  details.more code{background:var(--bg3);padding:2px 7px;border-radius:5px;font-size:13px;word-break:break-all}
+
+  .steps{counter-reset:s;list-style:none;margin-top:8px}
+  .steps li{counter-increment:s;position:relative;padding:16px 0 16px 52px;border-bottom:1px solid var(--line)}
+  .steps li:before{content:counter(s);position:absolute;left:0;top:18px;width:32px;height:32px;border-radius:50%;background:var(--gold);color:#0D0D14;font-weight:500;font-size:14px;display:flex;align-items:center;justify-content:center}
+  .steps b{display:block;font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:500;color:#fff;margin-bottom:2px}
+  .steps p{margin:0;font-size:16px}
+
+  .quote{font-family:'Cormorant Garamond',serif;font-size:clamp(24px,3.4vw,32px);font-weight:500;line-height:1.28;text-align:center;max-width:600px;margin:0 auto;color:var(--gold2)}
+  footer{padding:40px 0 56px;text-align:center;font-size:13px;color:var(--muted);border-top:1px solid var(--line)}
+  .toast{position:fixed;left:50%;bottom:26px;transform:translateX(-50%) translateY(20px);background:var(--gold);color:#0D0D14;padding:12px 22px;border-radius:999px;font-size:14px;opacity:0;pointer-events:none;transition:.25s}
+  .toast.on{opacity:1;transform:translateX(-50%) translateY(0)}
+  @media(max-width:600px){.codes{grid-template-columns:1fr}.count div{min-width:66px}.card{padding:28px 20px}}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="mark"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 205">
+<defs>
+  <linearGradient id="g1" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#8F6524"/><stop offset="22%" stop-color="#C8AF78"/><stop offset="48%" stop-color="#F0DCAE"/><stop offset="72%" stop-color="#C8AF78"/><stop offset="100%" stop-color="#9A6E29"/></linearGradient>
+  <linearGradient id="g2" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#F2E1B8"/><stop offset="38%" stop-color="#CDA968"/><stop offset="100%" stop-color="#8F6524"/></linearGradient>
+  <radialGradient id="g3" cx="50%" cy="38%" r="60%"><stop offset="0%" stop-color="#F0DCAE" stop-opacity="0.22"/><stop offset="100%" stop-color="#F0DCAE" stop-opacity="0"/></radialGradient>
+</defs>
+  <circle cx="100" cy="98" r="74" fill="url(#g3)"/>
+  <line x1="30.57" y1="58.28" x2="22.85" y2="53.65" stroke="url(#g1)" stroke-width="2.1" stroke-linecap="round" opacity="0.32"/><line x1="40.57" y1="44.97" x2="29.66" y2="34.86" stroke="url(#g1)" stroke-width="2.1" stroke-linecap="round" opacity="0.53"/><line x1="53.08" y1="33.97" x2="41.40" y2="17.54" stroke="url(#g1)" stroke-width="2.1" stroke-linecap="round" opacity="0.72"/><line x1="67.57" y1="25.77" x2="57.81" y2="3.44" stroke="url(#g1)" stroke-width="2.1" stroke-linecap="round" opacity="0.87"/><line x1="83.44" y1="20.71" x2="77.90" y2="-5.79" stroke="url(#g1)" stroke-width="2.1" stroke-linecap="round" opacity="0.97"/><line x1="100" y1="19" x2="100" y2="-9" stroke="url(#g1)" stroke-width="2.1" stroke-linecap="round"/><line x1="116.56" y1="20.71" x2="122.10" y2="-5.79" stroke="url(#g1)" stroke-width="2.1" stroke-linecap="round" opacity="0.97"/><line x1="132.43" y1="25.77" x2="142.19" y2="3.44" stroke="url(#g1)" stroke-width="2.1" stroke-linecap="round" opacity="0.87"/><line x1="146.92" y1="33.97" x2="158.60" y2="17.54" stroke="url(#g1)" stroke-width="2.1" stroke-linecap="round" opacity="0.72"/><line x1="159.43" y1="44.97" x2="170.34" y2="34.86" stroke="url(#g1)" stroke-width="2.1" stroke-linecap="round" opacity="0.53"/><line x1="169.43" y1="58.28" x2="177.15" y2="53.65" stroke="url(#g1)" stroke-width="2.1" stroke-linecap="round" opacity="0.32"/>
+  <circle cx="100" cy="100" r="72" fill="none" stroke="url(#g1)" stroke-width="2.6"/>
+  <rect x="74" y="58" width="52" height="86" rx="26" fill="none" stroke="url(#g2)" stroke-width="3.4"/>
+  <circle cx="100" cy="84" r="16" fill="url(#g2)"/></svg></div>
+    <div class="eyebrow">Your seat is confirmed</div>
+    <h1>You're in.</h1>
+    <p>Everything you need for Monday is on this page. Bookmark it — it's also in your confirmation email.</p>
+    <div class="count" id="count">
+      <div><b id="d">–</b><span>Days</span></div>
+      <div><b id="h">–</b><span>Hours</span></div>
+      <div><b id="m">–</b><span>Minutes</span></div>
+      <div><b id="s">–</b><span>Seconds</span></div>
+    </div>
+  </div>
+</header>
+
+<section>
+  <div class="wrap">
+    <div class="card">
+      <div class="eyebrow">The class</div>
+      <div class="big" style="margin-top:10px">Your Body Has Already Decided</div>
+      <div class="big" style="font-size:24px;color:var(--text)">Monday, October 26th, 2026</div>
+      <div class="time">8:00 – 9:15 AM Pacific</div>
+      <div class="local">11:00 AM Eastern · 10:00 AM Central · 9:00 AM Mountain · 3:00 PM UK · 4:00 PM Central Europe<br><span id="yourtime"></span></div>
+
+      <a class="btn block" href="https://us02web.zoom.us/j/85015563810?pwd=goDNpUhBhQ6dCOaCabOqwH3k3voqCJ.1" target="_blank" rel="noopener">Join the Zoom room →</a>
+
+      <div class="btnrow">
+        <a class="btn ghost" id="gcal" href="#" target="_blank" rel="noopener">Add to Google Calendar</a>
+        <a class="btn ghost" id="ics" href="#">Add to Apple / Outlook</a>
+      </div>
+
+      <div class="codes">
+        <div class="code"><button class="copy" data-copy="85015563810">Copy</button><span>Meeting ID</span><b>850 1556 3810</b></div>
+        <div class="code"><button class="copy" data-copy="148810">Copy</button><span>Passcode</span><b>148810</b></div>
+      </div>
+
+      <details class="more">
+        <summary>Joining by phone, or need the full dial-in details?</summary>
+        <div class="body">
+          <b>One tap mobile</b><br>
+          <a href="tel:+16694449171,,85015563810#,,,,*148810#">+1 669 444 9171,,85015563810#,,,,*148810#</a> (US)<br>
+          <a href="tel:+16699009128,,85015563810#,,,,*148810#">+1 669 900 9128,,85015563810#,,,,*148810#</a> (US — San Jose)<br><br>
+          <b>Join by SIP</b><br><code>85015563810@zoomcrc.com</code><br><br>
+          <b>Meeting chat link</b><br><a href="https://us02web.zoom.us/launch/jc/85015563810" target="_blank" rel="noopener">us02web.zoom.us/launch/jc/85015563810</a><br><br>
+          <b>Full Zoom invitation</b><br><a href="https://us02web.zoom.us/meetings/85015563810/invitations?signature=5x0_pcYSCjd3mwFtEGZsW9jjXPhOELEtelLde_oCuWk" target="_blank" rel="noopener">Open the complete invite details</a>
+        </div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<section style="padding-top:6px">
+  <div class="wrap">
+    <div class="eyebrow">Before Monday</div>
+    <h2>Three things. None of them take long.</h2>
+    <ol class="steps">
+      <li><b>Put it on your calendar right now.</b><p>Use one of the buttons above. If it's on the calendar, you'll be there.</p></li>
+      <li><b>Know your number.</b><p>Your current yearly income — the real one, not the one you'd like it to be. We're going to use it in the first ten minutes, and we're going to triple it. Don't overthink this. Just know it.</p></li>
+      <li><b>Set the room up for your body.</b><p>Somewhere you can sit undisturbed for 75 minutes and close your eyes without anyone walking in. Feet on the floor. Water nearby. No headphones required — your own voice in the room is part of this.</p></li>
+    </ol>
+  </div>
+</section>
+
+<section style="padding-top:10px">
+  <div class="wrap">
+    <div class="card">
+      <div class="eyebrow">And since you're in the Inner Circle now</div>
+      <h2 style="font-size:30px;margin-bottom:14px">Welcome. Here's what's open to you.</h2>
+      <p>Your Inner Circle welcome email arrives separately with your login and the community invite. Inside, you'll find the 30-Day Subconscious Reset — that's your onboarding, and it's the best thing you can start between now and Monday. One session a day. It'll have your body a little more ready for what we're going to do in the room.</p>
+      <p style="margin-bottom:0;font-size:15px;color:var(--muted)">Your membership is $47 a month and renews automatically. You can cancel anytime from inside your account — one click, no emails to send. The replay of Monday's class lives inside for as long as you're a member.</p>
+    </div>
+  </div>
+</section>
+
+<section style="background:var(--bg2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)">
+  <div class="wrap">
+    <p class="quote">"You can't believe your way into a reality<br>your body still codes as dangerous."</p>
+    <p style="text-align:center;color:var(--muted);font-size:14px;margin-top:18px">That's the whole class in one sentence. Monday, we go find out what your body has decided.</p>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <p style="margin-bottom:8px">Questions before Monday? Just reply to your confirmation email — it comes straight to us.</p>
+    <p style="margin:0">© 2026 Creating Through Energy · Ramon Osa · Wealth from Safety</p>
+  </div>
+</footer>
+
+<div class="toast" id="toast">Copied</div>
+
+<script>
+(function(){
+  var start = new Date(Date.UTC(2026,9,26,15,0,0));   // Oct 26 2026, 08:00 PDT
+  var end   = new Date(Date.UTC(2026,9,26,16,15,0));  // 09:15 PDT
+
+  try{
+    var opts={weekday:'long',month:'long',day:'numeric',hour:'numeric',minute:'2-digit'};
+    var tz=Intl.DateTimeFormat().resolvedOptions().timeZone;
+    document.getElementById('yourtime').textContent='In your time zone ('+tz+'): '+start.toLocaleString(undefined,opts);
+  }catch(e){}
+
+  var d=document.getElementById('d'),h=document.getElementById('h'),m=document.getElementById('m'),s=document.getElementById('s');
+  function pad(n){return n<10?'0'+n:''+n}
+  function tick(){
+    var diff=start-new Date();
+    if(diff<=0){document.getElementById('count').innerHTML='<div style="min-width:auto;padding:14px 26px"><b style="font-size:26px">We’re live — come on in</b></div>';return}
+    var dd=Math.floor(diff/864e5),hh=Math.floor(diff/36e5)%24,mm=Math.floor(diff/6e4)%60,ss=Math.floor(diff/1e3)%60;
+    d.textContent=dd;h.textContent=pad(hh);m.textContent=pad(mm);s.textContent=pad(ss);
+    setTimeout(tick,1000);
+  }
+  tick();
+
+  var title='Your Body Has Already Decided — Live with Ramon';
+  var loc='https://us02web.zoom.us/j/85015563810?pwd=goDNpUhBhQ6dCOaCabOqwH3k3voqCJ.1';
+  var desc='Join Zoom: '+loc+'\nMeeting ID: 850 1556 3810\nPasscode: 148810\n\nBring: your current yearly income number, water, and a room where you can close your eyes for 75 minutes.';
+  function z(dt){return dt.toISOString().replace(/[-:]/g,'').replace(/\.\d{3}/,'')}
+  document.getElementById('gcal').href='https://calendar.google.com/calendar/render?action=TEMPLATE&text='+encodeURIComponent(title)+'&dates='+z(start)+'/'+z(end)+'&details='+encodeURIComponent(desc)+'&location='+encodeURIComponent(loc);
+
+  document.getElementById('ics').addEventListener('click',function(e){
+    e.preventDefault();
+    var ics=['BEGIN:VCALENDAR','VERSION:2.0','PRODID:-//Creating Through Energy//Your Body Has Already Decided//EN','BEGIN:VEVENT',
+      'UID:body-has-decided-2026-10-26@creatingthroughenergy.com','DTSTAMP:'+z(new Date()),
+      'DTSTART:'+z(start),'DTEND:'+z(end),'SUMMARY:'+title,
+      'DESCRIPTION:'+desc.replace(/\n/g,'\\n'),'LOCATION:'+loc,
+      'BEGIN:VALARM','TRIGGER:-PT30M','ACTION:DISPLAY','DESCRIPTION:Your Body Has Already Decided starts in 30 minutes','END:VALARM',
+      'END:VEVENT','END:VCALENDAR'].join('\r\n');
+    var a=document.createElement('a');
+    a.href=URL.createObjectURL(new Blob([ics],{type:'text/calendar'}));
+    a.download='your-body-has-already-decided.ics';a.click();URL.revokeObjectURL(a.href);
+  });
+
+  var toast=document.getElementById('toast');
+  document.querySelectorAll('.copy').forEach(function(b){
+    b.addEventListener('click',function(){
+      var v=b.getAttribute('data-copy');
+      if(navigator.clipboard){navigator.clipboard.writeText(v)}
+      toast.classList.add('on');setTimeout(function(){toast.classList.remove('on')},1400);
+    });
+  });
+})();
+</script>
+</body>
+</html>
