@@ -268,7 +268,7 @@ p { margin: 0; }
     resetUrl: "https://www.creatingthroughenergy.com/reset/",   // the standalone Reset page, with the same stop time
     embedVideo: true,      // true on the live page: the Reset plays right on the result. Previews cannot embed video, so they link to it
     blueprintUrl: "https://www.creatingthroughenergy.com/blueprint/",   // the live Safety Blueprint sales page; the visitor's veto is added as #visibility, #loyalty or #ease
-    callUrl: "https://go.creatingthroughenergy.com/wfs-training"   // the WFS training page: they watch first, then the booking form unlocks under the video
+    callUrl: "https://go.creatingthroughenergy.com/wfs"   // the WFS opt-in: they register for the training (so they get the GHL follow-up), watch, then the booking form unlocks under the video
   };
 
   /* ---------- the questions ---------- */
@@ -658,8 +658,8 @@ p { margin: 0; }
       return h("section", { class: "offer" }, top,
         h("p", null, "You told me you already have something you’re building. That means this veto is sitting right on top of your income."),
         h("p", null, "If you’d like help with that, you can book a Roadblock Assessment with me. It’s 45 minutes. We find where your body is saying no, and whether I’m the right person to help you change it."),
-        h("p", null, "Before we talk, I’ll ask you to watch a short training first. It shows you how this works in your body, so we can spend our time on YOUR version of it. The booking link opens right under the video."),
-        link("Watch the training, then book my call", CONFIG.callUrl), sign);
+        h("p", null, "Before we talk, I’ll ask you to watch a short training first. It shows you how this works in your body, so we can spend our time on YOUR version of it. Tell me where to send it, and the booking link opens right under the video."),
+        link("Get the training, then book my call", CONFIG.callUrl), sign);
     }
     return h("section", { class: "offer" }, top,
       o.second ? h("p", null, "Your answers also pointed to the " + NAMES[o.second] + ". It’s quieter, but it’s there, and the way the two work together is particular to you.") : null,
