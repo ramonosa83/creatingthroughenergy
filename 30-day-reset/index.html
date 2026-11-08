@@ -124,7 +124,8 @@
     <h1>How to reprogram your subconscious mind to attract what you want <em>without forcing it</em> — in 30 days, even if you've done this work for decades and nothing stuck.</h1>
     <p class="sub">Thirty daily videos of five to seven minutes, each with one exercise that works on a belief through the body, where the belief is actually held. Plus live training with me and the group twice a week. Watch the video, then read on for the facts.</p>
     <div class="video"><wistia-player media-id="y4yvjimzmz" aspect="1.7777777777777777"></wistia-player></div>
-    <p class="meta"><b>Begins December 1</b> · $397 or two payments of $199 · live with Ramon Osa</p>
+    <p class="meta"><b>Begins Tuesday, December 1</b> · doors close that night · $397 or two payments of $199 · live with Ramon Osa</p>
+    <p class="meta eb" style="margin-top:-6px">Early-bird bonus until Sunday, Nov 16: a private 20-minute call with Ramon before we start</p>
     <a class="btn" href="https://creatingthroughenergy.thrivecart.com/30-day-subconscious-reset/">Join the Reset — $397</a>
     <p class="under">Or two payments of $199. Everything that's included is below.</p>
   </div>
@@ -304,7 +305,8 @@
       <ul class="inc">
         <li>30 daily training videos, five to seven minutes each, one exercise per day</li>
         <li>Live training Tuesdays and Saturdays, 8:00 AM Pacific, one hour, recorded and posted the same day</li>
-        <li>Kickoff call Monday, December 1 · bonus ninth call Friday, January 2</li>
+        <li>Kickoff call Tuesday, December 1 · bonus ninth call Saturday, January 2</li>
+        <li class="eb"><b>Early-bird bonus:</b> join by Sunday, November 16 and get a private 20-minute call with me before we start</li>
         <li>Private cohort WhatsApp group for all 30 days</li>
               </ul>
       <div class="trust">
@@ -347,5 +349,19 @@
   </div>
 </footer>
 
+<script>
+(function(){
+  var now=Date.now();
+  // Early bird ends Sun Nov 16 2026, 11:59 PM Pacific (= Nov 17 07:59 UTC)
+  if(now>Date.UTC(2026,10,17,7,59)){document.querySelectorAll('.eb').forEach(function(e){e.style.display='none'});}
+  // Doors close Tue Dec 1 2026, 11:59 PM Pacific (= Dec 2 07:59 UTC)
+  if(now>Date.UTC(2026,11,2,7,59)){
+    document.querySelectorAll('a.btn[href*="thrivecart.com/30-day-subconscious-reset"]').forEach(function(a){
+      var p=document.createElement('p');p.className='meta';p.innerHTML='<b>This cohort is closed.</b> The next one opens soon.';a.replaceWith(p);
+    });
+    document.querySelectorAll('.under').forEach(function(e){e.style.display='none'});
+  }
+})();
+</script>
 </body>
 </html>
